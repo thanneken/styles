@@ -49,7 +49,54 @@
          </xsl:otherwise>
       </xsl:choose>
    </xsl:template>
+
+   <xsl:template match="t:milestone[@unit='bk']">
+      <div>
+         <xsl:attribute name="style">color:blue;font-style:italic;</xsl:attribute>
+         <xsl:value-of select="@n"/>
+      </div>
+   </xsl:template>
+   <xsl:template match="t:milestone[@unit='ch']">
+      <div>
+         <xsl:attribute name="style">color:blue;font-style:italic;</xsl:attribute>
+         <xsl:text>chapter </xsl:text>
+         <xsl:value-of select="@n"/>
+      </div>
+   </xsl:template>
+   <xsl:template match="t:milestone[@unit='vs']">
+      <sup>
+         <xsl:attribute name="style">color:blue;margin-left:-1.3em;</xsl:attribute>
+         <xsl:value-of select="@n"/>
+      </sup>
+   </xsl:template>
+   <xsl:template match="t:milestone[@unit='page']">
+      <span>
+         <xsl:attribute name="style">color:green;</xsl:attribute>
+         <xsl:value-of select="@type"/>
+         <xsl:value-of select="@n"/>
+      </span>
+   </xsl:template>
+   <xsl:template match="t:milestone[@unit='column']">
+      <xsl:if test="not(@n='a')">
+        <span>
+           <xsl:attribute name="style">color:green;float:left;margin-left:-1em;</xsl:attribute>
+           <xsl:element name="i">
+              <xsl:value-of select="@n"/>
+           </xsl:element>
+        </span>
+      </xsl:if>
+   </xsl:template>
+
+   <xsl:template match="t:pb">
+         <xsl:element name="div">
+            <xsl:value-of select="@type"/>
+            <xsl:text> page </xsl:text>
+            <xsl:value-of select="@n"/>
+         </xsl:element>
+   </xsl:template>
    
+
+
    <xsl:template match="t:cb">
       <xsl:param name="parm-leiden-style" tunnel="yes" required="no"/>
       <xsl:if test="$parm-leiden-style='iospe'">

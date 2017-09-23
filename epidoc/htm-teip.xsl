@@ -5,9 +5,17 @@
                 version="2.0">
 
   <xsl:template match="t:p">
-      <p>
-         <xsl:apply-templates/>
-      </p>
+      <xsl:element name="p">
+          <xsl:choose>
+              <xsl:when test="@part='F'">
+                  <xsl:attribute name="style">margin: 0 0 0 0;padding-left:5em;</xsl:attribute>              
+              </xsl:when>
+              <xsl:otherwise>
+                  <xsl:attribute name="style">margin: 0 0 0 0;padding-left:5em;text-indent:-0.5em;</xsl:attribute>              
+              </xsl:otherwise>
+          </xsl:choose>
+          <xsl:apply-templates/>
+      </xsl:element>
   </xsl:template>
   
 </xsl:stylesheet>

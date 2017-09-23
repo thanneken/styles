@@ -1,4 +1,4 @@
-#styles
+# styles
 
 This is the Git repository of the styles used by the Jubilees Palimpsest Project  
 http://jubilees.stmarytx.edu/styles (the main IIIF repository)  
